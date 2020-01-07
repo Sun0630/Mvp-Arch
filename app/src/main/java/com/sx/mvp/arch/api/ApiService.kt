@@ -1,9 +1,11 @@
 package com.sx.mvp.arch.api
 
-import com.sx.mvp.arch.data.HttpResult
+import com.sx.mvp.arch.data.bean.Banner
+import com.sx.mvp.arch.data.bean.HttpResult
 import io.reactivex.Observable
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 /**
@@ -28,5 +30,13 @@ interface ApiService {
         @Field("password") password:String
     ) :Observable<HttpResult<Any>>
 
+
+    /**
+     * 获取轮播图
+     *
+     * @return
+     */
+    @GET("banner/json")
+    fun getBannerList():Observable<HttpResult<MutableList<Banner>>>
 
 }

@@ -1,4 +1,4 @@
-package com.sx.mvp.arch.data
+package com.sx.mvp.arch.data.bean
 
 import com.squareup.moshi.Json
 import com.sx.mvp.starter.bean.BaseBean
@@ -23,4 +23,16 @@ data class LoginData(
     @Json(name = "token") val token: String,
     @Json(name = "type") val type: Int,
     @Json(name = "username") val username: String
+)
+
+//轮播图
+data class Banner(
+    @Json(name = "desc") val desc: String,
+    @Json(name = "id") val id: Int,
+    @Json(name = "imagePath") val imagePath: String,
+    @Json(name = "isVisible") val isVisible: Int,
+    @Json(name = "order") val order: Int,
+    @Json(name = "title") val title: String,
+    @Json(name = "type") val type: Int,
+    @Json(name = "url") val url: String
 )

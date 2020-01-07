@@ -1,6 +1,7 @@
 package com.sx.mvp.arch.module.login.contract
 
-import com.sx.mvp.arch.data.HttpResult
+import com.sx.mvp.arch.data.bean.Banner
+import com.sx.mvp.arch.data.bean.HttpResult
 import com.sx.mvp.starter.mvp.IModel
 import com.sx.mvp.starter.mvp.IPresenter
 import com.sx.mvp.starter.mvp.IView
@@ -15,14 +16,20 @@ interface LoginContract {
 
     interface View : IView {
         fun loginSuccess()
+
+        fun showBanner(bannerList:MutableList<Banner>)
     }
 
     interface Presenter : IPresenter<View> {
         fun login(username: String, password: String)
+
+        fun getBanner()
     }
 
     interface Model : IModel {
         fun login(username: String, password: String):Observable<HttpResult<Any>>
+
+        fun getBannerList():Observable<HttpResult<MutableList<Banner>>>
     }
 
 }

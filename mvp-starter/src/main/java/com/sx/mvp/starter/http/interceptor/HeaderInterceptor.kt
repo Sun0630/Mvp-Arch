@@ -17,7 +17,7 @@ class HeaderInterceptor : Interceptor {
         newBuilder.addHeader("Content-type", "application/json; charset=utf-8")
 //            .header("token",token)
 
-        val domain = request.url().host()
+        val domain = request.url.host
         if (domain.isNotEmpty()){
             val spDomain:String by Preference(domain,"")
             val cookie :String = if (spDomain.isNotEmpty()) spDomain else ""

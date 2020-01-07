@@ -17,11 +17,16 @@ class LoginPresenter : BasePresenter<LoginContract.Model, LoginContract.View>(),
     override fun createModel(): LoginContract.Model? = LoginModel()
 
     override fun login(username: String, password: String) {
-        mView?.showLoading()
-        mModel?.login(username, password)?.exec(mModel,mView,onSuccess = {
+        mModel?.login(username, password)?.exec(mModel, mView, onSuccess = {
             mView?.loginSuccess()
         })
 
+    }
+
+    override fun getBanner() {
+        mModel?.getBannerList()?.exec(mModel, mView, onSuccess = {
+            mView?.showBanner(it.data)
+        })
     }
 
 }
