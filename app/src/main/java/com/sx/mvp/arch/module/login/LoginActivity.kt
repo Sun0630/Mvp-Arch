@@ -39,12 +39,10 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
     }
 
     override fun showLoading() {
-        println("---------show loading....------------")
         mDialog.show()
     }
 
     override fun hideLoading() {
-        println("---------hide loading....------------")
         mDialog.dismiss()
     }
 

@@ -14,7 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.sx.mvp.starter.R
 import com.sx.mvp.starter.config.AppConfig
 import com.sx.mvp.starter.utils.NLog
-import com.sx.mvp.starter.wigdet.CustomToast
+import com.sx.mvp.starter.widget.CustomToast
 
 fun Any.loge(content: String?) {
     val tag = this.javaClass.simpleName ?: AppConfig.TAG

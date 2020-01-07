@@ -2,6 +2,7 @@ package com.sx.mvp.arch.module.login.presenter
 
 import com.sx.mvp.arch.module.login.contract.LoginContract
 import com.sx.mvp.arch.module.login.model.LoginModel
+import com.sx.mvp.starter.ext.exec
 import com.sx.mvp.starter.mvp.BasePresenter
 
 /**
@@ -17,10 +18,10 @@ class LoginPresenter : BasePresenter<LoginContract.Model, LoginContract.View>(),
 
     override fun login(username: String, password: String) {
         mView?.showLoading()
-        mModel?.login(username, password){
+        mModel?.login(username, password)?.exec(mModel,mView,onSuccess = {
             mView?.loginSuccess()
-            mView?.hideLoading()
-        }
+        })
+
     }
 
 }

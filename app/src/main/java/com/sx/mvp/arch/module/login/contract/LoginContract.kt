@@ -1,8 +1,10 @@
 package com.sx.mvp.arch.module.login.contract
 
+import com.sx.mvp.arch.data.HttpResult
 import com.sx.mvp.starter.mvp.IModel
 import com.sx.mvp.starter.mvp.IPresenter
 import com.sx.mvp.starter.mvp.IView
+import io.reactivex.Observable
 
 /**
  * @author sunxin
@@ -20,7 +22,7 @@ interface LoginContract {
     }
 
     interface Model : IModel {
-        fun login(username: String, password: String, onSuccess: () -> Unit)
+        fun login(username: String, password: String):Observable<HttpResult<Any>>
     }
 
 }

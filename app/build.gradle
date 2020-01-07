@@ -29,5 +29,5 @@ dependencies {
     implementation project(path: ':mvp-starter')
 
     // qmui
-    implementation 'com.qmuiteam:qmui:1.2.0'
+    implementation 'com.qmuiteam:qmui:2.0.0-alpha02'
 }

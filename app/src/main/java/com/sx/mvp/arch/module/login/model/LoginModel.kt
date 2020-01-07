@@ -1,12 +1,11 @@
 package com.sx.mvp.arch.module.login.model
 
 import android.annotation.SuppressLint
+import com.sx.mvp.arch.api.MainRetrofit
+import com.sx.mvp.arch.data.HttpResult
 import com.sx.mvp.arch.module.login.contract.LoginContract
 import com.sx.mvp.starter.mvp.BaseModel
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import java.util.concurrent.TimeUnit
 
 /**
  * @author sunxin
@@ -16,11 +15,9 @@ import java.util.concurrent.TimeUnit
 @SuppressLint("CheckResult")
 class LoginModel : BaseModel(), LoginContract.Model {
 
-    override fun login(username: String, password: String, onSuccess: () -> Unit) {
-        Observable
-            .timer(3000, TimeUnit.MILLISECONDS)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe { onSuccess() }
+
+    override fun login(username: String, password: String): Observable<HttpResult<Any>> {
+        return MainRetrofit.service.login(username, password)
     }
+
 }

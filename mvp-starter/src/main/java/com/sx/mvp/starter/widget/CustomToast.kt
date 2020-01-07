@@ -1,4 +1,4 @@
-package com.sx.mvp.starter.wigdet
+package com.sx.mvp.starter.widget
 
 import android.content.Context
 import android.view.Gravity
