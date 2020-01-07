@@ -1,15 +1,19 @@
 package com.sx.mvp.arch.module.login
 
-import android.widget.Button
 import com.sx.mvp.arch.R
 import com.sx.mvp.arch.module.login.contract.LoginContract
 import com.sx.mvp.arch.module.login.presenter.LoginPresenter
+import com.sx.mvp.arch.utils.DialogUtil
 import com.sx.mvp.starter.base.BaseMvpTitleActivity
 import com.sx.mvp.starter.ext.setSingleClickListener
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Presenter>(),
     LoginContract.View {
+
+    private val mDialog by lazy {
+        DialogUtil.getWaitDialog(this,"正在加载中...")
+    }
 
     override fun attachChildLayoutId() = R.layout.activity_login
 
@@ -21,6 +25,7 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
         super.initView()
 
         setBaseTitle("登录")
+        setBaseTitleColor(R.color.white)
     }
 
 
@@ -35,10 +40,12 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
     override fun showLoading() {
         println("---------show loading....------------")
+        mDialog.show()
     }
 
     override fun hideLoading() {
         println("---------hide loading....------------")
+        mDialog.dismiss()
     }
 
 

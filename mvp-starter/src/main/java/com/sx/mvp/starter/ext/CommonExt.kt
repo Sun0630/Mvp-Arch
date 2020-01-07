@@ -16,12 +16,6 @@ import com.sx.mvp.starter.config.AppConfig
 import com.sx.mvp.starter.utils.NLog
 import com.sx.mvp.starter.wigdet.CustomToast
 
-/**
- * @author chenxz
- * @date 2018/11/20
- * @desc
- */
-
 fun Any.loge(content: String?) {
     val tag = this.javaClass.simpleName ?: AppConfig.TAG
     NLog.e(tag, content ?: "")
