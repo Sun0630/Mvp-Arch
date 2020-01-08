@@ -13,7 +13,7 @@ import retrofit2.http.POST
  * @date 2020-01-07 18:47
  * @desc
  */
-interface ApiService {
+interface LoginService {
 
 
     /**

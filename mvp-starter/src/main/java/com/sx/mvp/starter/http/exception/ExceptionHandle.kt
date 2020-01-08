@@ -11,7 +11,7 @@ import java.net.UnknownHostException
 import java.text.ParseException
 
 /**
- * Created by chenxz on 2018/4/21.
+ * 异常处理
  */
 class ExceptionHandle {
     companion object {

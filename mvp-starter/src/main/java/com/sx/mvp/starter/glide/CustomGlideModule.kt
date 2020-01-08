@@ -35,4 +35,6 @@ class CustomGlideModule : AppGlideModule() {
     override fun isManifestParsingEnabled(): Boolean {
         return false
     }
+
+
 }

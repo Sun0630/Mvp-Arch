@@ -1,14 +1,17 @@
 package com.sx.mvp.arch.module.login
 
+import android.Manifest
 import com.sx.mvp.arch.R
 import com.sx.mvp.arch.data.bean.Banner
 import com.sx.mvp.arch.module.login.contract.LoginContract
 import com.sx.mvp.arch.module.login.presenter.LoginPresenter
 import com.sx.mvp.arch.utils.DialogUtil
 import com.sx.mvp.starter.base.BaseMvpTitleActivity
+import com.sx.mvp.starter.ext.loge
 import com.sx.mvp.starter.ext.setSingleClickListener
-import com.sx.mvp.starter.glide.loadBlurPicture
+import com.sx.mvp.starter.ext.showSnackMsg
 import com.sx.mvp.starter.glide.loadReveal
+import com.sx.mvp.starter.permission.PermissionHelper
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Presenter>(),
@@ -45,6 +48,19 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
         btn_logout.setSingleClickListener {
             mPresenter?.logout()
+        }
+
+        btn_camera.setSingleClickListener {
+            loge("获取相机权限")
+            PermissionHelper.requestPermission(this,Manifest.permission.CAMERA,requestSuccess = {
+                showSnackMsg("相机权限获取成功")
+            })
+        }
+
+        btn_storage.setSingleClickListener {
+            PermissionHelper.requestPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE){
+                showSnackMsg("读取存储权限成功")
+            }
         }
 
     }
