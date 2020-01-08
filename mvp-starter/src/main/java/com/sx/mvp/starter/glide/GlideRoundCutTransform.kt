@@ -10,10 +10,7 @@ import java.security.MessageDigest
 import kotlin.math.sqrt
 
 /**
- * PackageName: com.library.utils.glide
- * Author : jiaqi Ye
- * Date : 2018/7/2
- * Time : 16:52
+ * 裁剪圆角
  */
 class GlideRoundCutTransform @JvmOverloads constructor(var radius  : Float = 4f)  : BitmapTransformation() {
 

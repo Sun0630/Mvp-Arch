@@ -8,9 +8,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.bumptech.glide.request.transition.TransitionFactory
 
 /**
- * showmethe.github.core.glide
  * 揭露动画+Scale动画切换
- * 2019/10/11
  */
 class DrawableScaleFadeFactory (
     private val duration: Int,

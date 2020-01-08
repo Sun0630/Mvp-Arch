@@ -1,9 +1,7 @@
 package com.sx.mvp.starter.http
 
 import HttpConstant
-import com.cxz.kotlin.baselibs.http.interceptor.QueryParameterInterceptor
 import com.sx.mvp.starter.config.AppConfig
-import com.sx.mvp.starter.http.interceptor.CacheInterceptor
 import com.sx.mvp.starter.http.interceptor.CookieInterceptor
 import com.sx.mvp.starter.http.interceptor.HeaderInterceptor
 import okhttp3.Cache
@@ -60,7 +58,7 @@ abstract class RetrofitFactory<T> {
     }
 
 
-    fun attachOkHttpClient(): OkHttpClient {
+    private fun attachOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient().newBuilder()
         val httpLoggingInterceptor = HttpLoggingInterceptor()
 

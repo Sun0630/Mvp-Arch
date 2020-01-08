@@ -1,9 +1,5 @@
 package com.sx.mvp.starter.glide
 
-/**
- * showmethe.github.kframework.glide
- * 2019/10/28
- */
 
 import com.bumptech.glide.integration.okhttp3.OkHttpStreamFetcher
 import com.bumptech.glide.load.Options

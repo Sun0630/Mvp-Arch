@@ -7,7 +7,8 @@ import com.sx.mvp.arch.module.login.presenter.LoginPresenter
 import com.sx.mvp.arch.utils.DialogUtil
 import com.sx.mvp.starter.base.BaseMvpTitleActivity
 import com.sx.mvp.starter.ext.setSingleClickListener
-import com.sx.mvp.starter.glide.load
+import com.sx.mvp.starter.glide.loadBlurPicture
+import com.sx.mvp.starter.glide.loadReveal
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Presenter>(),
@@ -74,7 +75,8 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
      * @param bannerList
      */
     override fun showBanner(bannerList: MutableList<Banner>) {
-        iv_Banner.load(bannerList[0].imagePath)
+//        iv_Banner.loadBlurPicture(bannerList[0].imagePath,8)
+        iv_Banner.loadReveal(bannerList[0].imagePath)
     }
 
 

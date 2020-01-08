@@ -7,6 +7,9 @@ import okhttp3.Response
 import java.lang.ref.WeakReference
 import java.util.*
 
+/**
+ * 图片加载进度拦截器
+ */
 class ProgressInterceptor : Interceptor {
 
     val LISTENER_MAP: WeakHashMap<String, WeakReference<ProgressListener>> = WeakHashMap()

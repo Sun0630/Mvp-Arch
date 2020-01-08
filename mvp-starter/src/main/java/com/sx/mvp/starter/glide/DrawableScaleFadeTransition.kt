@@ -13,10 +13,8 @@ import androidx.palette.graphics.Palette
 import com.bumptech.glide.request.transition.Transition
 
 /**
- * showmethe.github.core.glide
  *
- *
- * 2019/10/11
+ * 缩放渐进动画
  */
 class DrawableScaleFadeTransition(
     private val duration: Int,

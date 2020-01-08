@@ -9,11 +9,7 @@ import com.bumptech.glide.request.transition.Transition
 import com.bumptech.glide.util.Util
 
 
-/**
- * showmethe.github.core.glide
- *
- * 2019/1/10
- **/
+
 abstract class DrawableTarget constructor(private  val width: Int  = SIZE_ORIGINAL
                                           ,private  val height: Int = SIZE_ORIGINAL) : Target<Drawable>{
 

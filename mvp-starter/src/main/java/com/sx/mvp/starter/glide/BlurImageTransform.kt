@@ -11,10 +11,7 @@ import com.commit451.nativestackblur.NativeStackBlur
 import java.security.MessageDigest
 
 /**
- * PackageName: com.library.utils.glide
- * Author : jiaqi Ye
- * Date : 2018/7/3
- * Time : 16:32
+ * 模糊
  */
 class BlurImageTransform constructor(var radius: Int) : BitmapTransformation() {
 

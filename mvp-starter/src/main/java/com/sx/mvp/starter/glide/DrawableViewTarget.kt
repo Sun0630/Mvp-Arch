@@ -5,11 +5,7 @@ import android.widget.ImageView
 import com.bumptech.glide.request.target.CustomViewTarget
 import com.bumptech.glide.request.transition.Transition
 
-/**
- * showmethe.github.core.glide
- * ken
- * 2019/1/10
- **/
+
 abstract class DrawableViewTarget(view: ImageView) : CustomViewTarget<ImageView, Drawable>(view) {
 
     override fun onLoadFailed(errorDrawable: Drawable?) {
