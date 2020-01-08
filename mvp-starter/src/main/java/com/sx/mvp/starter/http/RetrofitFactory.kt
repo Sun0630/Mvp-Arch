@@ -1,6 +1,7 @@
 package com.sx.mvp.starter.http
 
 import HttpConstant
+import com.orhanobut.logger.Logger
 import com.sx.mvp.starter.config.AppConfig
 import com.sx.mvp.starter.http.interceptor.CookieInterceptor
 import com.sx.mvp.starter.http.interceptor.HeaderInterceptor
@@ -60,7 +61,20 @@ abstract class RetrofitFactory<T> {
 
     private fun attachOkHttpClient(): OkHttpClient {
         val builder = OkHttpClient().newBuilder()
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
+        val httpLoggingInterceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String) {
+                // 如果是 json 格式内容则打印 json
+                if ((message.startsWith("{") && message.endsWith("}")) ||
+                    (message.startsWith("[") && message.endsWith("]"))
+                ) {
+                    Logger.json(message)
+                } else {
+                    Logger.v(message)
+                }
+
+            }
+
+        })
 
         if (AppConfig.debug) {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
