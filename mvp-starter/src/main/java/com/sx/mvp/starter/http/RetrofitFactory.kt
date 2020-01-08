@@ -69,7 +69,7 @@ abstract class RetrofitFactory<T> {
                 ) {
                     Logger.json(message)
                 } else {
-                    Logger.v(message)
+                    Logger.d(message)
                 }
 
             }

@@ -1,6 +1,7 @@
 package com.sx.mvp.arch.module.login
 
 import android.Manifest
+import com.orhanobut.logger.Logger
 import com.sx.mvp.arch.R
 import com.sx.mvp.arch.data.bean.Banner
 import com.sx.mvp.arch.module.login.contract.LoginContract
@@ -29,13 +30,13 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
     override fun initView() {
         super.initView()
-
         setBaseTitle("登录")
         setBaseTitleColor(R.color.white)
     }
 
 
     override fun initData() {
+
         btn_login.setSingleClickListener {
             val username = username.text.toString()
             val password = password.text.toString()
@@ -75,6 +76,7 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
 
     override fun start() {
+        loge("test")
     }
 
     override fun loginSuccess() {

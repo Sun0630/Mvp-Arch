@@ -22,7 +22,6 @@ object AppConfig {
 
     fun init(application: Application) {
         this.application = application
-        initLogger()
     }
 
    private fun initLogger(){

@@ -17,11 +17,7 @@ import com.sx.mvp.starter.config.AppConfig
 import com.sx.mvp.starter.utils.NLog
 import com.sx.mvp.starter.widget.CustomToast
 
-fun Any.loge(content: String?) {
-    val tag = this.javaClass.simpleName ?: AppConfig.TAG
-//    NLog.e(tag, content ?: "")
-    Logger.e(tag,content ?: "")
-}
+
 
 fun dp2px(dpValue: Float): Int {
     return (0.5f + dpValue * Resources.getSystem().displayMetrics.density).toInt()
