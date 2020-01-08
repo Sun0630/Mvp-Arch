@@ -17,19 +17,25 @@ interface LoginContract {
     interface View : IView {
         fun loginSuccess()
 
-        fun showBanner(bannerList:MutableList<Banner>)
+        fun logoutSuccess()
+
+        fun showBanner(bannerList: MutableList<Banner>)
     }
 
     interface Presenter : IPresenter<View> {
         fun login(username: String, password: String)
 
+        fun logout()
+
         fun getBanner()
     }
 
     interface Model : IModel {
-        fun login(username: String, password: String):Observable<HttpResult<Any>>
+        fun login(username: String, password: String): Observable<HttpResult<Any>>
 
-        fun getBannerList():Observable<HttpResult<MutableList<Banner>>>
+        fun logout(): Observable<HttpResult<Any>>
+
+        fun getBannerList(): Observable<HttpResult<MutableList<Banner>>>
     }
 
 }

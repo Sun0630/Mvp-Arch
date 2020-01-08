@@ -79,7 +79,7 @@ abstract class RetrofitFactory<T> {
             addInterceptor(HeaderInterceptor())
 //            addInterceptor(CacheInterceptor())
             addInterceptor(CookieInterceptor())
-            addInterceptor(QueryParameterInterceptor())
+//            addInterceptor(QueryParameterInterceptor())
             cache(cache)
             connectTimeout(HttpConstant.DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             readTimeout(HttpConstant.DEFAULT_TIMEOUT, TimeUnit.SECONDS)

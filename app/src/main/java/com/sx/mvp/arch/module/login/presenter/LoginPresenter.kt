@@ -23,6 +23,12 @@ class LoginPresenter : BasePresenter<LoginContract.Model, LoginContract.View>(),
 
     }
 
+    override fun logout() {
+        mModel?.logout()?.exec(mModel,mView,onSuccess = {
+            mView?.logoutSuccess()
+        })
+    }
+
     override fun getBanner() {
         mModel?.getBannerList()?.exec(mModel, mView, onSuccess = {
             mView?.showBanner(it.data)

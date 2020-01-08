@@ -26,9 +26,9 @@ interface ApiService {
     @POST("user/login")
     @FormUrlEncoded
     fun login(
-        @Field("username") username:String,
-        @Field("password") password:String
-    ) :Observable<HttpResult<Any>>
+        @Field("username") username: String,
+        @Field("password") password: String
+    ): Observable<HttpResult<Any>>
 
 
     /**
@@ -37,6 +37,14 @@ interface ApiService {
      * @return
      */
     @GET("banner/json")
-    fun getBannerList():Observable<HttpResult<MutableList<Banner>>>
+    fun getBannerList(): Observable<HttpResult<MutableList<Banner>>>
+
+
+    /**
+     * 退出登录
+     *
+     */
+    @GET("user/logout/json")
+    fun logout(): Observable<HttpResult<Any>>
 
 }

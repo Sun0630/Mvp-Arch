@@ -42,6 +42,10 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
             mPresenter?.getBanner()
         }
 
+        btn_logout.setSingleClickListener {
+            mPresenter?.logout()
+        }
+
     }
 
     override fun showLoading() {
@@ -58,6 +62,10 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
     override fun loginSuccess() {
         showDefaultMsg("登录成功")
+    }
+
+    override fun logoutSuccess() {
+        showDefaultMsg("退出成功")
     }
 
     /**

@@ -21,6 +21,10 @@ class LoginModel : BaseModel(), LoginContract.Model {
         return MainRetrofit.service.login(username, password)
     }
 
+    override fun logout(): Observable<HttpResult<Any>> {
+        return MainRetrofit.service.logout()
+    }
+
     override fun getBannerList(): Observable<HttpResult<MutableList<Banner>>> {
         return MainRetrofit.service.getBannerList()
     }
