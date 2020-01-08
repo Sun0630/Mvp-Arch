@@ -3,4 +3,11 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application>
+        <provider
+            android:authorities="${applicationId}.KotlinMvpContentProvider"
+            android:name=".provider.KotlinMvpContentProvider"
+            android:exported="false" />
+    </application>
 </manifest>
