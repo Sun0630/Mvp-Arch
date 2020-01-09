@@ -14,7 +14,6 @@ abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity()
 
     protected var mPresenter: P? = null
 
-    private var mHolder: Gloading.Holder? = null
 
     protected abstract fun createPresenter(): P
 
@@ -23,13 +22,7 @@ abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity()
         mPresenter?.attachView(this as V)
     }
 
-    private fun initLoadingStatusViewIfNeed() {
-        if (mHolder == null) {
-            mHolder = Gloading.getDefault().wrap(this).withRetry {
-                onLoadRetry()
-            }
-        }
-    }
+
 
     /**
      * 点击重试
@@ -45,29 +38,7 @@ abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity()
     }
 
 
-    override fun showLoading() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showLoading()
-    }
 
-    override fun hideLoading() {
-
-    }
-
-    override fun showLoadingSuccess() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showLoadSuccess()
-    }
-
-    override fun showLoadingFailed() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showLoadFailed()
-    }
-
-    override fun showEmpty() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showEmpty()
-    }
 
     override fun showDefaultMsg(msg: String) {
         showToast(msg)

@@ -2,6 +2,7 @@ package com.sx.mvp.starter.base
 
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
+import com.billy.android.loading.Gloading
 import com.sx.mvp.starter.R
 import com.sx.mvp.starter.mvp.IPresenter
 import com.sx.mvp.starter.mvp.IView
@@ -14,6 +15,16 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  * @desc 带头部导航的基类
  */
 abstract class BaseMvpTitleActivity<in V : IView, P : IPresenter<V>> : BaseMvpActivity<V, P>() {
+
+    private var mHolder: Gloading.Holder? = null
+
+    private fun initLoadingStatusViewIfNeed() {
+        if (mHolder == null) {
+            mHolder = Gloading.getDefault().wrap(this).withRetry {
+                onLoadRetry()
+            }
+        }
+    }
 
     protected abstract fun attachChildLayoutId():Int
 
@@ -46,6 +57,30 @@ abstract class BaseMvpTitleActivity<in V : IView, P : IPresenter<V>> : BaseMvpAc
 
     fun setBaseTitleColor(@ColorRes color: Int) {
         tv_base_title.setTextColor(resources.getColor(color))
+    }
+
+    override fun showLoading() {
+        initLoadingStatusViewIfNeed()
+        mHolder?.showLoading()
+    }
+
+    override fun hideLoading() {
+
+    }
+
+    override fun showLoadingSuccess() {
+        initLoadingStatusViewIfNeed()
+        mHolder?.showLoadSuccess()
+    }
+
+    override fun showLoadingFailed() {
+        initLoadingStatusViewIfNeed()
+        mHolder?.showLoadFailed()
+    }
+
+    override fun showEmpty() {
+        initLoadingStatusViewIfNeed()
+        mHolder?.showEmpty()
     }
 
 }

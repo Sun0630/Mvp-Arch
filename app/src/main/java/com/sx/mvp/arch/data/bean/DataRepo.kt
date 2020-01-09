@@ -9,7 +9,7 @@ import com.sx.mvp.starter.bean.BaseBean
  * @desc
  */
 
-data class HttpResult<T> (@Json(name="data") val data:T) :BaseBean()
+data class HttpResult<T> (@Json(name="data") val data:T) : BaseBean()
 
 
 // 登录数据

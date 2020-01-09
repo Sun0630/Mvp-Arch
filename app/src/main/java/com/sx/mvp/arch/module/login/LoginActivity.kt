@@ -67,8 +67,8 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
     }
 
     override fun showLoading() {
-        super.showLoading()
-//        mDialog.show()
+//        super.showLoading()
+        mDialog.show()
     }
 
     override fun hideLoading() {
@@ -76,8 +76,8 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
     }
 
     override fun showLoadingSuccess() {
-        super.showLoadingSuccess()
-//        mDialog.dismiss()
+//        super.showLoadingSuccess()
+        mDialog.dismiss()
     }
 
 
@@ -106,7 +106,7 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
 
     override fun onLoadRetry() {
-
+        mPresenter?.getBanner()
     }
 
 
