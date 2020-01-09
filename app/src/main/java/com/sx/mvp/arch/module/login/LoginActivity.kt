@@ -67,11 +67,17 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
     }
 
     override fun showLoading() {
-        mDialog.show()
+        super.showLoading()
+//        mDialog.show()
     }
 
     override fun hideLoading() {
         mDialog.dismiss()
+    }
+
+    override fun showLoadingSuccess() {
+        super.showLoadingSuccess()
+//        mDialog.dismiss()
     }
 
 
@@ -95,6 +101,12 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
     override fun showBanner(bannerList: MutableList<Banner>) {
 //        iv_Banner.loadBlurPicture(bannerList[0].imagePath,8)
         iv_Banner.loadReveal(bannerList[0].imagePath)
+    }
+
+
+
+    override fun onLoadRetry() {
+
     }
 
 

@@ -38,7 +38,8 @@ fun <T : BaseBean> Observable<T>.exec(
             }
 
             override fun onNext(t: T) {
-                view?.hideLoading()
+//                view?.hideLoading()
+                view?.showLoadingSuccess()
                 when {
                     t.errorCode == HttpStatus.SUCCESS -> onSuccess(t)
                     t.errorCode == HttpStatus.TOKEN_INVALID -> {
@@ -56,7 +57,8 @@ fun <T : BaseBean> Observable<T>.exec(
             }
 
             override fun onError(t: Throwable) {
-                view?.hideLoading()
+//                view?.hideLoading()
+                view?.showLoadingFailed()
                 view?.showError(ExceptionHandle.handleException(t))
             }
         })
@@ -89,7 +91,7 @@ fun <T : BaseBean> Observable<T>.execs(
                 }
             }
         }, {
-            view?.hideLoading()
+            view?.showLoadingFailed()
             view?.showError(ExceptionHandle.handleException(it))
         })
 }

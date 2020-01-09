@@ -49,7 +49,7 @@ fun Fragment.showSnackMsg(msg: String) {
 }
 
 fun Context.openBrowser(url: String) {
-    Intent(Intent.ACTION_VIEW, Uri.parse(url)).run { startActivity(this) }
+    Intent(Intent.ACTION_VIEW, Uri.parse(url)).run {  startActivity(this) }
 }
 
 // 扩展点击事件属性(重复点击时长)

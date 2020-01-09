@@ -11,6 +11,12 @@ interface IView {
 
     fun hideLoading()
 
+    fun showLoadingFailed()
+
+    fun showLoadingSuccess()
+
+    fun showEmpty()
+
     fun showDefaultMsg(msg: String)
 
     fun showMsg(msg:String)
