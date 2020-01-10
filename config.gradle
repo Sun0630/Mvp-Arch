@@ -100,6 +100,5 @@ ext {
     networkLibs = retrofit.values()
     rxJavaLibs = rxJava.values()
     commonLibs = commonDeps.values()
-    compileLibs = commonDeps.values()
 
 }
