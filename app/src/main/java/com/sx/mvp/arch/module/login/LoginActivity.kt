@@ -12,8 +12,10 @@ import com.sx.mvp.starter.ext.loge
 import com.sx.mvp.starter.ext.setSingleClickListener
 import com.sx.mvp.starter.ext.showSnackMsg
 import com.sx.mvp.starter.glide.loadReveal
+import com.sx.mvp.starter.loading.LoadingDialog
 import com.sx.mvp.starter.permission.PermissionHelper
 import io.reactivex.Flowable
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
@@ -24,6 +26,10 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
     private val mDialog by lazy {
         DialogUtil.getWaitDialog(this, "正在加载中...")
+    }
+
+    private val loadingDialog by lazy {
+        LoadingDialog.create(supportFragmentManager)
     }
 
     override fun attachChildLayoutId() = R.layout.activity_login
@@ -72,12 +78,9 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
         }
 
         btn_loading_success.setOnClickListener {
-            showSnackMsg("jdsfsdfl")
+            showGlobalLoading()
             Flowable
                 .just(1)
-                .doOnNext {
-                    showGlobalLoading()
-                }
                 .delay(3000, TimeUnit.MILLISECONDS)
 //                .subscribeOn(Schedulers.io())
 //                .observeOn(AndroidSchedulers.mainThread())
@@ -85,6 +88,16 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
                     showGlobalSuccess()
                 }
 
+
+        }
+
+        btn_loading_dialog.setOnClickListener {
+            loadingDialog.show()
+            Observable
+                .timer(3000,TimeUnit.MILLISECONDS)
+                .subscribe {
+                    loadingDialog.dismiss()
+                }
 
         }
 
