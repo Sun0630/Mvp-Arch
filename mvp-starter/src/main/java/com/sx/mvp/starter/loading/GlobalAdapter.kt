@@ -1,6 +1,5 @@
 package com.sx.mvp.starter.loading
 
-import android.provider.Settings
 import android.view.View
 import com.billy.android.loading.Gloading
 import com.sx.mvp.starter.config.AppConfig

@@ -1,7 +1,7 @@
 package com.sx.mvp.arch.module.login
 
 import android.Manifest
-import com.orhanobut.logger.Logger
+import android.annotation.SuppressLint
 import com.sx.mvp.arch.R
 import com.sx.mvp.arch.data.bean.Banner
 import com.sx.mvp.arch.module.login.contract.LoginContract
@@ -13,13 +13,17 @@ import com.sx.mvp.starter.ext.setSingleClickListener
 import com.sx.mvp.starter.ext.showSnackMsg
 import com.sx.mvp.starter.glide.loadReveal
 import com.sx.mvp.starter.permission.PermissionHelper
+import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_login.*
+import java.util.concurrent.TimeUnit
 
 class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Presenter>(),
     LoginContract.View {
 
     private val mDialog by lazy {
-        DialogUtil.getWaitDialog(this,"正在加载中...")
+        DialogUtil.getWaitDialog(this, "正在加载中...")
     }
 
     override fun attachChildLayoutId() = R.layout.activity_login
@@ -28,10 +32,12 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
     override fun hasBackIcon(): Boolean = false
 
+    @SuppressLint("CheckResult")
     override fun initView() {
         super.initView()
         setBaseTitle("登录")
         setBaseTitleColor(R.color.white)
+
     }
 
 
@@ -43,6 +49,7 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
             mPresenter?.login(username, password)
         }
 
+
         btn_get_banner.setSingleClickListener {
             mPresenter?.getBanner()
         }
@@ -53,15 +60,40 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 
         btn_camera.setSingleClickListener {
             loge("获取相机权限")
-            PermissionHelper.requestPermission(this,Manifest.permission.CAMERA,requestSuccess = {
+            PermissionHelper.requestPermission(this, Manifest.permission.CAMERA, requestSuccess = {
                 showSnackMsg("相机权限获取成功")
             })
         }
 
         btn_storage.setSingleClickListener {
-            PermissionHelper.requestPermission(this,Manifest.permission.WRITE_EXTERNAL_STORAGE){
+            PermissionHelper.requestPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) {
                 showSnackMsg("读取存储权限成功")
             }
+        }
+
+        btn_loading_success.setOnClickListener {
+            showSnackMsg("jdsfsdfl")
+            Flowable
+                .just(1)
+                .doOnNext {
+                    showGlobalLoading()
+                }
+                .delay(3000, TimeUnit.MILLISECONDS)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    showGlobalSuccess()
+                }
+
+
+        }
+
+        btn_loading_empty.setOnClickListener {
+            showGlobalEmpty()
+        }
+
+        btn_loading_fail.setOnClickListener {
+            showGlobalLoadingFailed()
         }
 
     }
@@ -102,7 +134,6 @@ class LoginActivity : BaseMvpTitleActivity<LoginContract.View, LoginContract.Pre
 //        iv_Banner.loadBlurPicture(bannerList[0].imagePath,8)
         iv_Banner.loadReveal(bannerList[0].imagePath)
     }
-
 
 
     override fun onLoadRetry() {

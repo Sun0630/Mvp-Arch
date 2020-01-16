@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import com.billy.android.loading.Gloading
 import com.sx.mvp.starter.utils.CommonUtil
 import com.sx.mvp.starter.utils.KeyBoardUtil
 import org.greenrobot.eventbus.EventBus
@@ -16,7 +17,6 @@ import org.greenrobot.eventbus.EventBus
  * @desc Activity基类
  */
 abstract class BaseActivity : AppCompatActivity() {
-
 
     // 是否使用EventBus
     open fun userEventBus(): Boolean = false

@@ -54,7 +54,7 @@ object DialogUtil {
      */
     fun getWaitDialog(context: Context, message: String): QMUITipDialog {
         return QMUITipDialog.Builder(context)
-            .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+            .setIconType(QMUITipDialog.Builder.ICON_TYPE_SUCCESS)
             .setTipWord(message)
             .create()
     }

@@ -24,11 +24,7 @@ abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity()
 
 
 
-    /**
-     * 点击重试
-     *
-     */
-    abstract fun onLoadRetry()
+
 
 
     override fun onDestroy() {

@@ -16,19 +16,44 @@ import kotlinx.android.synthetic.main.layout_toolbar.*
  */
 abstract class BaseMvpTitleActivity<in V : IView, P : IPresenter<V>> : BaseMvpActivity<V, P>() {
 
-    private var mHolder: Gloading.Holder? = null
 
-    private fun initLoadingStatusViewIfNeed() {
-        if (mHolder == null) {
-            mHolder = Gloading.getDefault().wrap(this).withRetry {
-                onLoadRetry()
-            }
-        }
-    }
 
     protected abstract fun attachChildLayoutId():Int
 
     override fun attachLayoutId(): Int = R.layout.activity_base_title
+
+    private var mHolder: Gloading.Holder? = null
+
+
+//    private fun initLoadingStatusViewIfNeed() {
+//        if (mHolder == null) {
+//            mHolder = Gloading.getDefault().wrap(this).withRetry {
+//                onLoadRetry()
+//            }
+//        }
+//    }
+
+    /**
+     * 点击重试
+     *
+     */
+    abstract fun onLoadRetry()
+
+    fun showGlobalLoading() {
+        mHolder?.showLoading()
+    }
+
+    fun showGlobalLoadingFailed() {
+        mHolder?.showLoadFailed()
+    }
+
+    fun showGlobalEmpty() {
+        mHolder?.showEmpty()
+    }
+
+    fun showGlobalSuccess() {
+        mHolder?.showLoadSuccess()
+    }
 
     /**
      * 是否有返回键
@@ -40,7 +65,13 @@ abstract class BaseMvpTitleActivity<in V : IView, P : IPresenter<V>> : BaseMvpAc
 
     override fun initView() {
         super.initView()
-        fl_container.addView(layoutInflater.inflate(attachChildLayoutId(), null, false))
+        val layoutView = layoutInflater.inflate(attachChildLayoutId(), null, false)
+        fl_container.addView(layoutView)
+        if (mHolder == null) {
+            mHolder = Gloading.getDefault().wrap(layoutView).withRetry {
+                onLoadRetry()
+            }
+        }
         toolbar.title = ""
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(hasBackIcon())
@@ -60,8 +91,7 @@ abstract class BaseMvpTitleActivity<in V : IView, P : IPresenter<V>> : BaseMvpAc
     }
 
     override fun showLoading() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showLoading()
+
     }
 
     override fun hideLoading() {
@@ -69,18 +99,15 @@ abstract class BaseMvpTitleActivity<in V : IView, P : IPresenter<V>> : BaseMvpAc
     }
 
     override fun showLoadingSuccess() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showLoadSuccess()
+
     }
 
     override fun showLoadingFailed() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showLoadFailed()
+
     }
 
     override fun showEmpty() {
-        initLoadingStatusViewIfNeed()
-        mHolder?.showEmpty()
+
     }
 
 }
